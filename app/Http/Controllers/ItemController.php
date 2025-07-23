@@ -1,0 +1,161 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreItemRequest;
+use App\Http\Requests\UpdateItemRequest;
+use App\Http\Resources\ItemResource;
+use App\Models\ExercisePlanTemplate;
+use App\Models\Item;
+use App\Models\Type;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
+
+class ItemController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        $validated = $request->validate([
+            'search' => ['nullable', 'string'],
+        ]);
+
+        $items = Item::query();
+
+        if(array_key_exists('search', $validated)){
+            $items->where('name', 'like', '%'.$validated['search'].'%');
+        }
+
+        return Inertia::render('Dashboard' , [
+            'items' =>  $items->orderBy('name')
+                ->select(['id', 'name','image','type_id'])
+                ->with('type')
+                ->cursorPaginate(30)
+                ->appends(request()->query()),
+            'search' => $validated['search'] ?? null
+        ]);
+
+    }
+
+    public function create()
+    {
+        $types = Type::all();
+
+        return Inertia::render('items/createItem', [
+            'types' => $types,
+        ]);
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreItemRequest $request)
+    {
+
+        $random_name = null;
+
+        if($request->hasFile('image')){
+            $random_name = Str::random(32) . "." .  $request->file('image')->extension();
+
+            Storage::disk('items')
+                ->put($random_name, file_get_contents($request->file('image')));
+        }
+
+
+        $item = Item::create(
+            $request->safe(['name', 'description', 'type_id']) + [
+                'image' => $random_name,
+                'user_id' => Auth::id(),
+            ]
+        );
+
+        return to_route('items.show', $item)
+            ->with('message', 'Item created successfully.')
+            ->with('severity', 'success');
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Item $item)
+    {
+        $item->load([
+            'exercise_plans'=>[
+                'exercises'
+            ]
+        ]);
+        return Inertia::render('items/showItem' , [
+            'item' => $item,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Item $item)
+    {
+        $types = Type::all();
+
+        return Inertia::render('items/editItem' , [
+            'item' => $item,
+            'types' => $types,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateItemRequest $request, Item $item)
+    {
+
+        $file_name = $item->image;
+
+        if($request->hasFile('image')){
+            $deleted= Storage::disk('items')->delete($item->image);
+
+            $file_name = Str::random(32) . "." .  $request->file('image')->extension();
+
+            Storage::disk('items')
+                ->put($file_name, file_get_contents($request->file('image')));
+        }
+
+
+        $item = $item->update(
+            $request->safe(['name', 'description', 'type_id']) + [
+                'image' => $file_name,
+            ]
+        );
+
+        return to_route('items.show', $item)
+            ->with('message', 'Item updated successfully.')
+            ->with('severity', 'success');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Item $item)
+    {
+        //
+    }
+
+
+    public function search(Request $request)
+    {
+        $validated = $request->validate([
+            'search' => ['required', 'string'],
+        ]);
+
+        $items = Item::where('name', 'like', '%'.$validated['search'].'%')->get();
+
+
+        return ItemResource::collection($items);
+    }
+}
