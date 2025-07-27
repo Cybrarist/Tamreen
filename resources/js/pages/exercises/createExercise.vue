@@ -49,16 +49,16 @@ const submit_form = () => {
         <h3 class="text-3xl mt-4 ">Create Exercise</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
 
-                <FloatLabel class="col-span-1">
-                    <InputText required class="w-full" id="name" v-model="form.name" />
+                <FloatLabel class="col-span-full md:col-span-1">
+                    <InputText required fluid id="name" v-model="form.name" />
                     <label for="name">Name *</label>
                 </FloatLabel>
 
 
-                <FloatLabel class="col-span-1">
+                <FloatLabel class="col-span-full md:col-span-1">
                     <MultiSelect
+                        fluid
                         display="chip"
-                        class="w-full"
                         :options="body_parts"
                         v-model="form.body_parts"
                         filter
@@ -72,9 +72,9 @@ const submit_form = () => {
                     <label for="name">Body Parts</label>
                 </FloatLabel>
 
-                <FloatLabel class="col-span-1 col-start-1" >
+                <FloatLabel class="col-span-full md:col-span-1 col-start-1" >
                     <Select
-                        class="w-full"
+                        fluid
                         :options="units"
                         v-model="form.unit"
                         filter
@@ -84,9 +84,9 @@ const submit_form = () => {
                     <label for="name">Unit *</label>
                 </FloatLabel>
 
-                <FloatLabel class="col-start-1 col-span-2">
+                <FloatLabel class="col-span-full col-start-1 md:col-span-2">
                     <Textarea
-                        class="w-full"
+                        fluid
                         rows="5"
                         v-model="form.description"
                         auto-resize
@@ -95,7 +95,7 @@ const submit_form = () => {
                 </FloatLabel>
 
 
-                <div class="start-col-1 col-span-2 space-y-4">
+                <div class="start-col-1 col-span-full md:col-span-2 space-y-4">
                     <h2 class="text-xl"> Images </h2>
                     <FileUpload
                         :show-upload-button="false "
@@ -122,7 +122,7 @@ const submit_form = () => {
                 </div>
 
 
-                <div class="start-col-1 col-span-2 space-y-4">
+                <div class="start-col-1 col-span-full md:col-span-2 space-y-4">
                     <h2 class="text-xl"> Videos </h2>
                     <FileUpload
                         :show-upload-button="false "

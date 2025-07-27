@@ -41,7 +41,7 @@ const create_new_workout = (plan_id: number) => {
 const confirm = useConfirm();
 const delete_confirmation = (id:number) => {
     confirm.require({
-        message: 'Are you sure you want to Delete this item?',
+        message: 'Deleting this item will remove everything related to it (plan, workout, etc). Are you sure you want to delete this item?',
         header: 'Confirmation',
         icon: 'pi pi-exclamation-triangle',
         rejectProps: {
@@ -74,33 +74,32 @@ const delete_plan = (id:number) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <CloneTemplateToItem @cloned="router.reload()" v-if="plan_dialog" @closed="plan_dialog=false" :item_id="item.id" />
 
-
-        <div class="w-full mt-8 flex items-end justify-end space-x-8">
+        <section class="w-full mt-8 flex items-end justify-between sm:justify-end space-x-8">
             <Link :href="route('workouts.index', {item_id: item.id})">
                 <Button severity="warn" label="Pending Workouts" />
             </Link>
-                <DropdownMenu >
-                    <DropdownMenuTrigger class="hover:cursor-pointer">
-                        <RippleButton >Actions</RippleButton>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        <DropdownMenuItem  @click="plan_dialog=true" class="hover:cursor-pointer">
-                            <Plus /> Add New Plan
-                        </DropdownMenuItem>
-                        <DropdownMenuItem @click="router.get(route('items.edit', { item: item.id}))" class="hover:cursor-pointer">
-                             <SquarePen /> Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                            @click="delete_confirmation(item.id)"
-                            class="hover:cursor-pointer hover:text-red-600!">
-                            <Trash2 />
-                            Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+            <DropdownMenu >
+                <DropdownMenuTrigger class="hover:cursor-pointer">
+                    <RippleButton >Actions</RippleButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                    <DropdownMenuItem  @click="plan_dialog=true" class="hover:cursor-pointer">
+                        <Plus /> Add New Plan
+                    </DropdownMenuItem>
+                    <DropdownMenuItem @click="router.get(route('items.edit', { item: item.id}))" class="hover:cursor-pointer">
+                         <SquarePen /> Edit
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        @click="delete_confirmation(item.id)"
+                        class="hover:cursor-pointer hover:text-red-600!">
+                        <Trash2 />
+                        Delete</DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </section>
 
-        </div>
-        <div class="flex flex-row flex-wrap p-8">
-            <div class="w-2/5 flex items-center justify-center">
+        <div class="flex flex-col  md:flex-row flex-wrap p-8">
+            <div class="w-full md:w-2/5 flex items-center justify-center">
                 <DirectionAwareHover
                    :image-url="`/storage/items/${item.image}`"
                     class="shadow-xl max-w-3/5"
@@ -108,7 +107,7 @@ const delete_plan = (id:number) => {
                 />
             </div>
 
-            <div class="w-3/5 flex-col space-y-12">
+            <div class="w-full mt-8 md:mt-0 md:w-3/5 flex-col space-y-12">
                 <h1 class="text-center text-3xl"> {{item.name }}</h1>
                 <ScrollPanel header="Description">
                     <p class="m-0 px-8">

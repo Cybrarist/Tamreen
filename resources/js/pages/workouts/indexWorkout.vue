@@ -24,7 +24,7 @@ const workouts = ref<Workout[]>(page.props.workouts as Workout[])
     <AppLayout :breadcrumbs="breadcrumbs">
         <div  class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
 
-            <div v-if="workouts.data.length" class="grid w-full auto-rows-min gap-4 md:grid-cols-6 grid-cols-2" >
+            <div v-if="workouts.data.length" class="grid grid-cols-2 z-20 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4" >
                 <Link :key="workout.id" v-for="workout in workouts.data"
                       :href="route('workouts.show', workout.id)"
                       class="relative"

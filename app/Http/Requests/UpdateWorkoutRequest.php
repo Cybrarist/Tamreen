@@ -26,7 +26,7 @@ class UpdateWorkoutRequest extends FormRequest
             'exercises' => ['array' , 'required'],
             'exercises.*.id' => ['required', 'numeric', 'exists:exercises,id'],
             'exercises.*.count' => ['required', 'numeric' , 'integer', 'min:0'],
-            'exercises.*.multiplier' => ['required', 'numeric' , 'integer', 'min:0'],
+            'exercises.*.multiplier' => ['required', 'numeric' , 'min:0'],
             'exercises.*.completed' => ['nullable', 'numeric' , 'integer', 'min:0'],
         ];
     }

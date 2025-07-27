@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('exercise_exercise_plan_template', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignIdFor(Exercise::class)->constrained();
-            $table->foreignIdFor(ExercisePlanTemplate::class)->constrained();
+            $table->foreignIdFor(Exercise::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ExercisePlanTemplate::class)->constrained()->cascadeOnUpdate();
 
             $table->unsignedInteger('multiplier')->default(1);
             $table->unique(['exercise_id', 'exercise_plan_template_id']);

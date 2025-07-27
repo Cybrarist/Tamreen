@@ -49,9 +49,8 @@ const placeholders = computed(()=>{
                 <Link :key="item.id" v-for="item in bodyParts"
                       :href="route('items.show', item.id)" >
                     <ExerciseCard>
-
                         <div class="w-full h-full flex justify-center items-center">
-                            <h3 class="z-20 text-2xl font-bold">{{item.name}}</h3>
+                            <h3 class="z-20 text-2xl text-white font-bold">{{item.name}}</h3>
                             <img :src="'/storage/body_parts/abs.jpg'"
                                  class="object-cover h-full w-full absolute z-10 opacity-50"
                             />

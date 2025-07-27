@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Item::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(ExercisePlan::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('status')->default(WorkoutStatusEnum::Pending->value);
+            $table->string('status')->default(WorkoutStatusEnum::InProgress->value);
 
         });
     }

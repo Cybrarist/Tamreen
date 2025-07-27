@@ -78,18 +78,18 @@ const get_remaining_exercises = (index) => {
         header="Build your plan"
         @afterHide="emits('closed')"
         modal
-        class="w-[60%]" >
+        class="w-full md:w-4/5 mx-4 xl:w-[60%]" >
 
         <form  @submit.prevent="submit_form" class="grid w-full grid-cols-2 gap-x-4 gap-y-12 rounded-xl my-12">
 
-            <FloatLabel class="col-span-1">
-                <InputText class="w-full" id="name" v-model="form.name" />
+            <FloatLabel class="col-span-full md:col-span-1">
+                <InputText fluid id="name" v-model="form.name" />
                 <label for="name">Name</label>
             </FloatLabel>
 
-            <FloatLabel class="col-span-1">
+            <FloatLabel class="col-span-full md:col-span-1">
                     <Textarea
-                        class="w-full"
+                        fluid
                         rows="5"
                         v-model="form.description"
                         auto-resize
@@ -102,17 +102,25 @@ const get_remaining_exercises = (index) => {
                 <template #header >
                     <div class="flex justify-between w-full">
                         <h3 class="text-xl">Exercises</h3>
-                        <RippleButton class="hidden md:block float-end"  @click.prevent="add_exercise">
+                        <RippleButton class="float-end"  @click.prevent="add_exercise">
                             + Add Exercise
                         </RippleButton>
                     </div>
                 </template>
 
                 <div v-for="(exercise, index ) in form.exercises"
-                     class="grid w-full grid-cols-12 space-y-4 gap-x-8 pt-4">
-                    <FloatLabel class="col-span-4">
+                     class="grid w-full grid-cols-1 md:grid-cols-12 space-y-8 md:space-y-4 md:gap-x-8 pt-4">
+                    <div class="sm:hidden col-span-full">
+                        <Button rounded size="small" severity="danger" icon="pi pi-trash"
+                                raised
+                                class="float-end "
+                                @click="remove_exercise(index)"
+                        />
+                    </div>
+
+                    <FloatLabel class="col-span-full md:col-span-4">
                         <Select
-                            class="w-full "
+                            fluid
                             filter
                             v-model="exercise.exercise_id"
                             :options="get_remaining_exercises(index)"
@@ -122,15 +130,19 @@ const get_remaining_exercises = (index) => {
                         <label for="name">Exercise </label>
                     </FloatLabel>
 
-                    <div class="col-span-3" >
-                        <NumberField id="number_field" v-model="exercise.multiplier"  class="h-full p-select" :default-value="1"  :step="1" :min="0">
+                    <div class="col-span-full md:col-span-3 h-11" >
+                        <NumberField id="number_field"
+                                     v-model="exercise.multiplier"
+                                     class="h-full  p-select w-full"
+                                     :default-value="1"
+                                     :step="0.1" :min="0">
                             <Label for="number_field" class="absolute top-[var(--p-floatlabel-over-active-top)]
                              text-[var(--p-floatlabel-active-color)] font-normal left-[var(--p-floatlabel-position-x)]"
                                 style="font-size:var(--p-floatlabel-active-font-size)"
                             >Multiplier</Label>
-                            <NumberFieldContent >
+                            <NumberFieldContent class="w-full ">
                                 <NumberFieldDecrement />
-                                <NumberFieldInput class="h-full shadow-none border-0" />
+                                <NumberFieldInput class="h-full shadow-none border-0 " />
                                 <NumberFieldIncrement  class="cursor-pointer hover:opacity-25"/>
                             </NumberFieldContent>
                         </NumberField>
@@ -148,7 +160,7 @@ const get_remaining_exercises = (index) => {
                     </div>
 
 
-                    <div class="col-span-2">
+                    <div class="hidden sm:block col-span-2">
                         <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                 raised
                                 class="float-end "
@@ -161,7 +173,7 @@ const get_remaining_exercises = (index) => {
                 </div>
             </Panel>
 
-            <div class="col-span-2">
+            <div class="col-span-full md:col-span-2">
                 <RippleButton class="max-w-32 float-end" type="submit">
                     Submit
                 </RippleButton>

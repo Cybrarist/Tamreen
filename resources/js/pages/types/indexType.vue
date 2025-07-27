@@ -21,17 +21,10 @@ const types = page.props.types as Type[]
 const search  = ref<string>(page.props.search);
 
 const placeholders = computed(()=>{
-    console.log(types.data)
     return types.data.map(type => type.name)
 })
 
 const debouncedSearch = useDebounceFn(async () => {
-    if (!search.value) {
-        router.get(route('types.index'))
-        types = page.props.types as Type[]
-        return
-    }
-
     router.get(route('types.index'), {
         search: search.value,
     },{

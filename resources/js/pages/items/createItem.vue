@@ -37,22 +37,22 @@ const submit_form = () => {
     <Head title="Create Item" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <h3 class="text-3xl mt-4 ">Create Item</h3>
-            <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
+            <form  @submit.prevent="submit_form"
+                   class="w-full grid  grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-6 sm:gap-y-12 rounded-xl my-12">
 
-                <div class="col-span-1">
-                    <FloatLabel >
-                        <InputText class="w-full" id="name" v-model="form.name" />
+                <div class="col-span-full sm:col-span-1">
+                    <FloatLabel>
+                        <InputText fluid id="name" v-model="form.name" />
                         <label for="name">Name</label>
 
                     </FloatLabel>
                     <InputError class="mt-2" :message="form.errors.name" />
-
                 </div>
 
-                <div class="col-span-1">
-                    <FloatLabel  >
+                <div class="col-span-full sm:col-span-1">
+                    <FloatLabel>
                         <Select
-                            class="w-full"
+                            fluid
                             :options="types"
                             v-model="form.type_id"
                             option-value="id"
@@ -67,10 +67,10 @@ const submit_form = () => {
                 </div>
 
 
-                <div class="col-start-1 col-span-2">
+                <div class="col-span-full sm:col-start-1 sm:col-span-2">
                     <FloatLabel>
                     <Textarea
-                        class="w-full"
+                        fluid
                         rows="5"
                         v-model="form.description"
                         auto-resize

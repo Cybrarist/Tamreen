@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Http\Resources\ItemResource;
-use App\Models\ExercisePlanTemplate;
+use App\Models\ExercisePlan;
 use App\Models\Item;
 use App\Models\Type;
+use App\Models\Workout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -19,9 +22,9 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $validated = $request->validate([
+        $validated = request()->validate([
             'search' => ['nullable', 'string'],
         ]);
 
@@ -143,7 +146,42 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        Gate::authorize('delete', $item);
+
+        DB::transaction(function () use ($item) {
+
+            $exercise_plans_for_item = ExercisePlan::where('item_id', $item->id)
+                ->pluck('id')
+                ->toArray();
+
+            DB::table('exercise_exercise_plan')
+                ->whereIn('exercise_plan_id', $exercise_plans_for_item)
+                ->delete();
+
+            $workouts_for_item = Workout::where('item_id', $item->id)
+                ->pluck('id')
+                ->toArray();
+
+            DB::table('exercise_workout')
+                ->whereIn('workout_id', $workouts_for_item)
+                ->delete();
+
+            Workout::whereIn('id', $workouts_for_item)
+                ->delete();
+
+            ExercisePlan::whereIn('id', $exercise_plans_for_item)
+                ->delete();
+
+            if ($item->image)
+                Storage::disk('items')->delete($item->image);
+
+            $item->delete();
+
+        });
+
+        return to_route('items.index')
+            ->with('message', 'Item deleted successfully.')
+            ->with('severity', 'success');
     }
 
 

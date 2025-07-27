@@ -92,15 +92,15 @@ const delete_video = (video: string) => {
         <h3 class="text-3xl mt-4 ">Edit {{ exercise.name }}</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
 
-                <FloatLabel class="col-span-1">
-                    <InputText class="w-full" id="name" v-model="form.name" />
+                <FloatLabel class="col-span-full md:col-span-1">
+                    <InputText required fluid id="name" v-model="form.name" />
                     <label for="name">Name</label>
                 </FloatLabel>
 
-                <FloatLabel class="col-span-1">
+                <FloatLabel class="col-span-full md:col-span-1">
                     <MultiSelect
+                        fluid
                         display="chip"
-                        class="w-full"
                         :options="body_parts"
                         v-model="form.body_parts"
                         filter
@@ -113,9 +113,9 @@ const delete_video = (video: string) => {
                     <label for="name">Body Parts</label>
                 </FloatLabel>
 
-                <FloatLabel class="col-span-1 col-start-1" >
+                <FloatLabel class="col-span-full md:col-start-1 md:col-span-1" >
                     <Select
-                        class="w-full"
+                        fluid
                         :options="units"
                         v-model="form.unit"
                         filter
@@ -124,9 +124,9 @@ const delete_video = (video: string) => {
                     <label for="name">Unit</label>
                 </FloatLabel>
 
-                <FloatLabel class="col-start-1 col-span-2">
+                <FloatLabel class="col-span-full md:col-start-1 md:col-span-2">
                     <Textarea
-                        class="w-full"
+                        fluid
                         rows="5"
                         v-model="form.description"
                         auto-resize
@@ -135,7 +135,7 @@ const delete_video = (video: string) => {
                 </FloatLabel>
 
 
-                <div class="start-col-1 col-span-2 space-y-4">
+                <div class="start-col-1 col-span-full md:col-span-2 space-y-4">
                     <h2 class="text-xl"> Images </h2>
                     <FileUpload
                         :show-upload-button="false "
@@ -161,13 +161,13 @@ const delete_video = (video: string) => {
                     </FileUpload>
                 </div>
 
-                <div class="col-span-2 col-start-1">
-                    <Carousel :show-navigators="false" show-indicators   :value="exercise.images"
-
+                <div class="col-span-full md:col-span-2 col-start-1">
+                    <Carousel :show-navigators="false" show-indicators
+                              :value="exercise.images"
                               :responsive-options="responsiveOptions" :numVisible="3" :numScroll="1"
                               circular :autoplayInterval="3000">
                         <template #item="slotProps">
-                            <div class="rounded-2xl m-2  max-w-72 relative">
+                            <div class="rounded-2xl  m-2 mx-auto max-h-32  md:max-w-72 relative">
                                 <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                         raised
                                         class="float-right absolute! right-4 top-4 z-10"
@@ -175,8 +175,11 @@ const delete_video = (video: string) => {
                                 />
                                 <Image :src="'/storage/exercises/' + slotProps.data" class="m-auto" preview
                                     :pt="{
+                                    root:{
+                                        class:'w-full'
+                                    },
                                     image:{
-                                        class: 'rounded-lg'
+                                        class: 'rounded-lg  mx-auto max-h-32 '
                                     }
                                     }"
                                 />
@@ -188,7 +191,7 @@ const delete_video = (video: string) => {
 
 
 
-                <div class="start-col-1 col-span-2 space-y-4">
+                <div class="start-col-1 col-span-full md:col-span-2 space-y-4">
                     <h2 class="text-xl"> Videos </h2>
                     <FileUpload
                         :show-upload-button="false "
@@ -213,12 +216,12 @@ const delete_video = (video: string) => {
                     </FileUpload>
                 </div>
 
-                <div class="col-span-2 col-start-1">
+                <div class="col-span-full md:col-span-2  col-start-1">
                     <Carousel :show-navigators="false" show-indicators   :value="exercise.videos"
                               :responsive-options="responsiveOptions" :numVisible="3" :numScroll="1"
                               circular :autoplayInterval="3000">
                         <template #item="slotProps">
-                            <div class="rounded-2xl m-2  max-w-72 relative">
+                            <div class="rounded-2xl w-full mx-auto m-2  max-w-72 relative">
                                 <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                         raised
                                         class="float-right absolute! right-4 top-4 z-10"
@@ -227,7 +230,8 @@ const delete_video = (video: string) => {
 
                                 <video :src="'/storage/exercises/' + slotProps.data"
                                        muted controls
-                                    class="rounded-lg w-full"
+
+                                    class="rounded-lg mx-auto w-full"
                                 />
                             </div>
                         </template>
@@ -235,7 +239,7 @@ const delete_video = (video: string) => {
 
                 </div>
 
-                <div class="col-span-2">
+                <div class="col-span-full md:col-span-2">
                     <RippleButton class="col-start-1 w-32 float-right"  type="submit"> Update </RippleButton>
                 </div>
 

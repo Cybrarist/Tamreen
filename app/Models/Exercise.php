@@ -23,7 +23,6 @@ class Exercise extends Model
         'images',
         'videos',
         'unit',
-        'body_part_id',
         'user_id',
     ];
 

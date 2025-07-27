@@ -4,9 +4,8 @@ namespace App\Enum;
 
 enum WorkoutStatusEnum : string
 {
-    case Pending = "pending";
+    case InProgress = "in progress";
 
-    case PartiallyCompleted="partial";
 
     case Completed = "completed";
 

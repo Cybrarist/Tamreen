@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\WorkoutStatusEnum;
 use App\Http\Requests\StoreWorkoutRequest;
 use App\Http\Requests\UpdateWorkoutRequest;
-use App\Models\Exercise;
 use App\Models\Workout;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class WorkoutController extends Controller
@@ -22,19 +22,15 @@ class WorkoutController extends Controller
             'item_id' => ['nullable', 'integer'],
         ]);
 
-        $pending_workout_ids = DB::table('exercise_workout')
-            ->whereRaw('total= 0 or total != completed')
-            ->distinct('workout_id')
-            ->pluck('workout_id');
-
         $query = Workout::query()
-            ->whereIn('id', $pending_workout_ids);
+            ->whereIn('status', [
+                WorkoutStatusEnum::InProgress,
+            ]);
 
         if(request()->has('item_id'))
-            $query->where('item_id', request()->get('item_id'));
+            $query->where('item_id', $validated['item_id']);
 
-        $query->whereIn('id', $pending_workout_ids)
-            ->with([
+        $query->with([
                 'item:id,name,image,type_id',
                 'item.type:id,name',
                 'exercises:id'
@@ -105,7 +101,7 @@ class WorkoutController extends Controller
 
         foreach ($validated['exercises'] as &$exercise) {
             $exercise['workout_id'] = $workout->id;
-            $exercise['total'] = $exercise['count'] * $exercise['multiplier'];
+            $exercise['total'] = ceil($exercise['count'] * $exercise['multiplier']);
             $exercise['exercise_id'] = $exercise['id'];
         }
 
@@ -116,6 +112,7 @@ class WorkoutController extends Controller
                 ['exercise_id' , 'workout_id'],
                 ['count' , 'total', 'completed']
             );
+
     }
 
     /**
@@ -123,6 +120,15 @@ class WorkoutController extends Controller
      */
     public function destroy(Workout $workout)
     {
-        //
+        Gate::authorize('delete', $workout);
+
+        DB::transaction(function () use ($workout) {
+            $workout->exercises()->detach();
+            $workout->delete();
+        });
+
+        return to_route('workouts.index')
+            ->with('message', 'Workout deleted successfully.')
+            ->with('severity', 'success');
     }
 }

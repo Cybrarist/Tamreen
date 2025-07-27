@@ -1,7 +1,7 @@
 <template>
   <form
     :class="[
-      'relative mx-auto h-12 max-w-xl overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-zinc-800',
+      'relative  h-12 max-w-xl overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-zinc-800',
       vanishingText && 'bg-gray-50',
     ]"
     @submit.prevent="handleSubmit"
@@ -32,7 +32,7 @@
        duration-200"
     >
 
-        <X   class="text-primary-foreground"/>
+        <Search  class="w-4 text-primary-foreground"/>
 
     </button>
 
@@ -62,7 +62,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, onBeforeUnmount } from "vue";
 import { templateRef } from "@vueuse/core";
-import { X } from "lucide-vue-next";
+import { Search } from "lucide-vue-next";
 
 // Define interfaces for props and data structures
 interface Props {

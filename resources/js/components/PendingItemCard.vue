@@ -40,7 +40,7 @@ const progress = (props.exercises?.reduce((acc, exercise) => acc + exercise.pivo
         </HoverCardTrigger>
     </HoverCard>
     <Tag :value="item.name" severity="secondary"
-         class="absolute  bottom-4 w-[calc(100%-3px)] text-center right-0 left-0 mx-auto z-10 "
+         class="absolute  bottom-6 rounded-none! text-center right-0 left-0 mx-auto z-10 "
     />
 </template>
 

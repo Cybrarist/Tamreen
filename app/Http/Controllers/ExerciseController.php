@@ -9,7 +9,6 @@ use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class ExerciseController extends Controller
@@ -17,18 +16,30 @@ class ExerciseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $validated = $request->validate([
+            'search' => ['nullable', 'string'],
+        ]);
 
-        $exercises = Exercise::all();
         $body_parts = BodyPart::all();
-        return Inertia::render(
-            'exercises/indexExercise',
-            [
-                'body_parts' => $body_parts,
-                'exercises' => $exercises,
-            ]
-        );
+        $exercises = Exercise::query();
+
+        if(array_key_exists('search', $validated)){
+            $exercises->where('name', 'like', '%'.$validated['search'].'%');
+        }
+
+        return Inertia::render('exercises/indexExercise' , [
+            'exercises' =>  $exercises->orderBy('name')
+                ->select(['id', 'name','images'])
+                ->with('body_parts')
+                ->cursorPaginate(30)
+                ->appends(request()->query()),
+            'search' => $validated['search'] ?? null,
+            'body_parts' => $body_parts,
+
+        ]);
+
     }
 
     /**

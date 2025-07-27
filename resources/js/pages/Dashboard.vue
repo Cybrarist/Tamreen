@@ -25,12 +25,6 @@ const placeholders = computed(()=>{
 })
 
 const debouncedSearch = useDebounceFn(async () => {
-    if (!search.value) {
-        router.get(route('items.index'))
-        items.value = page.props.items as Item[]
-        return
-    }
-
     router.get(route('items.index'), {
         search: search.value,
     },{
@@ -45,29 +39,27 @@ const debouncedSearch = useDebounceFn(async () => {
     <Head title="Dashboard" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div  class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
-            <div class="w-full flex justify-between sticky">
-                <div class="w-full flex justify-between">
-                    <div class="w-full md:w-1/3 flex flex-row">
-                        <VanishingInput
-                            class="w-full"
-                            v-model="search"
-                            @change="debouncedSearch"
-                            :placeholders="placeholders"
-                        />
-                    </div>
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+            <div class="w-full flex justify-between">
+                <div class="w-full flex justify-between items-center">
+                    <VanishingInput
+                        class="w-3/5 sm:w-2/3 lg:w-1/3"
+                        v-model="search"
+                        @change="debouncedSearch"
+                        :placeholders="placeholders"
+                    />
 
-                    <Link :href="route('items.create')">
+                    <Link class="w-fit" :href="route('items.create')">
                         <Button size="small" label="Add Item" icon="pi pi-plus" />
                     </Link>
                 </div>
             </div>
 
-            <div v-if="items.data.length" class="grid w-full auto-rows-min gap-4 md:grid-cols-6 grid-cols-2" >
+            <div v-if="items.data.length"
+                 class="grid grid-cols-2 z-20 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 " >
                 <Link :key="item.id" v-for="item in items.data"
                       :href="route('items.show', item.id)"
-                      class="relative"
-                >
+                      class="relative z-20">
                     <ItemCard :item="item" />
                 </Link>
 

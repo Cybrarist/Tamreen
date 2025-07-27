@@ -13,7 +13,7 @@ withDefaults(defineProps<Props>(), {
 import { Toaster } from '@/components/ui/sonner'
 import 'vue-sonner/style.css'
 import {usePage} from "@inertiajs/vue3";
-import {computed, onMounted, onUpdated, watch} from "vue";
+import {onMounted, watch} from "vue";
 import {toast} from "vue-sonner";
 const page = usePage();
 
@@ -34,9 +34,6 @@ watch(() => page.props.flash, flash => {
 <template>
     <Toaster  rich-colors position="top-right" theme="system"/>
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="px-8">
-            <slot />
-
-        </div>
+        <slot />
     </AppLayout>
 </template>

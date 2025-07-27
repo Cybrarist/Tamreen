@@ -2,8 +2,8 @@
 
 
 use App\Http\Actions\CloneTemplateToExerciseAction;
+use App\Http\Actions\CompleteWorkoutAction;
 use App\Http\Controllers\BodyPartController;
-use App\Http\Controllers\CreateNewWorkoutForItem;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExercisePlanController;
 use App\Http\Controllers\ExercisePlanTemplateController;
@@ -30,6 +30,7 @@ Route::middleware('auth')
         Route::get('/templates/{template}/{item}/clone', CloneTemplateToExerciseAction::class)->name('templates.clone');
         Route::delete('/plans/{plan}/delete', [ExercisePlanController::class, 'destroy'])->name('plans.delete');
         Route::resource('workouts', WorkoutController::class);
+        Route::get('/workouts/{workout}/complete', CompleteWorkoutAction::class)->name('workouts.complete');
     });
 
 

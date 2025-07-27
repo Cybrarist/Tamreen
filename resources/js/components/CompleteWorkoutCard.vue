@@ -41,19 +41,20 @@ const update_workout = (value) => {
 <template>
 
     <div class="flex flex-col items-center justify-center w-full">
-        <div class="w-full flex items-center justify-center h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md hover:cursor-pointer"
-             :style="`background-image: url(/storage/exercises/${((exercise.images?.length) ? exercise.images[0] : 'abs.jpg')})`">
+        <div class="w-full flex items-center justify-center h-42 md:h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md hover:cursor-pointer"
+             :style="`background-image: url(/storage/exercises/${((exercise.images?.length) ? exercise.images[0] : 'exercise.png')})`">
             <Tag :value="`${exercise.pivot.metric} (${props.hotkey})`" severity="secondary"
                  class="mx-auto w-full text-center"
-                 :pt:label:class="'text-3xl font-bold text-primary capitalize'"
+                 :pt:label:class="'text-lg md:text-3xl font-bold text-primary capitalize'"
                  :pt:root:class="'rounded-none!'"
             />
         </div>
-
-        <div class="flex items-center justify-between px-3 py-2 w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+        <div class="flex items-center justify-between px-3 py-2
+            flex-col md:flex-row
+             w-42 lg:w-50 xl:w-64 -mt-10 overflow-hidden  rounded-lg shadow-lg bg-primary-foreground">
             <NumberField :model-value="exercise.pivot.completed"
                          @update:model-value=" (value) => update_workout(value)"
-                         class="max-w-3/5 text-center"
+                         class="md:max-w-3/5 text-center"
                          :max="exercise.pivot.total"
                          :default-value="exercise.pivot.completed"
             >
@@ -63,9 +64,8 @@ const update_workout = (value) => {
                     <NumberFieldIncrement />
                 </NumberFieldContent>
             </NumberField>
-            <p class="text-center">
-                Remaining: <span class="font-bold text-gray-800 dark:text-gray-200">{{exercise.pivot.total - exercise.pivot.completed}}</span>
-            </p>
+
+            <span class="font-bold text-gray-800 dark:text-gray-200">{{exercise.pivot.total - exercise.pivot.completed}}</span>
 
         </div>
     </div>
