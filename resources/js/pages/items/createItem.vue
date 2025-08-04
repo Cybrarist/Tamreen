@@ -36,7 +36,8 @@ const submit_form = () => {
 <template>
     <Head title="Create Item" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <h3 class="text-3xl mt-4 ">Create Item</h3>
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+            <h3 class="text-3xl mt-4 ">Create Item</h3>
             <form  @submit.prevent="submit_form"
                    class="w-full grid  grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-6 sm:gap-y-12 rounded-xl my-12">
 
@@ -114,7 +115,7 @@ const submit_form = () => {
                     </RippleButton>
                 </div>
         </form>
-
+        </div>
 
     </AppLayout>
 </template>

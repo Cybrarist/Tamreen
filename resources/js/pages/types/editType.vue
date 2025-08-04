@@ -44,25 +44,27 @@ const submit_form = () => {
     <Head :title="`Edit ${type.name}`" />
     <AppLayout :breadcrumbs="breadcrumbs">
 
-        <h3 class="text-3xl mt-4 ">Edit {{ type.name }}</h3>
-        <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+            <h3 class="text-3xl mt-4 ">Edit {{ type.name }}</h3>
+            <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
 
-            <div class="col-span-1">
-                <FloatLabel >
-                    <InputText class="w-full" id="name" v-model="form.name" />
-                    <label for="name">Name</label>
+                <div class="col-span-1">
+                    <FloatLabel >
+                        <InputText class="w-full" id="name" v-model="form.name" />
+                        <label for="name">Name</label>
 
-                </FloatLabel>
-                <InputError class="mt-2" :message="form.errors.name" />
+                    </FloatLabel>
+                    <InputError class="mt-2" :message="form.errors.name" />
 
-            </div>
+                </div>
 
-            <div class="col-start-1 col-span-1">
-                <RippleButton class="max-w-32 float-start" type="submit">
-                    Submit
-                </RippleButton>
-            </div>
-        </form>
+                <div class="col-start-1 col-span-1">
+                    <RippleButton class="max-w-32 float-start" type="submit">
+                        Submit
+                    </RippleButton>
+                </div>
+            </form>
+        </div>
 
 
     </AppLayout>

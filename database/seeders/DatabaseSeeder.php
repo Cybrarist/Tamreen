@@ -17,11 +17,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@test.com',
             'password' => 'password',
+            'role' => 'admin'
         ]);
 
+        User::factory(100)->create();
 
         $this->call([
-            TypeSeeder::class,
             BodyPartSeeder::class,
             ExerciseSeeder::class,
         ]);

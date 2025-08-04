@@ -5,11 +5,14 @@ import {Link} from "@inertiajs/vue3";
 defineProps({
     nextLink: String,
     prevLink: String,
+    class: String,
 })
 </script>
 
 <template>
-    <div class="flex items-center justify-between flex-wrap -mb-1" v-if="prevLink || nextLink">
+    <div class="flex items-center justify-between flex-wrap -mb-1" v-if="prevLink || nextLink"
+        :class="class"
+    >
         <Link  class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
                :class="{
             'opacity-50 cursor-not-allowed': !prevLink

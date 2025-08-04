@@ -15,6 +15,10 @@ class ExerciseSeeder extends Seeder
     public function run(): void
     {
 
+        if (Exercise::count() > 0) {
+            return;
+        }
+
         Exercise::factory()
             ->forEachSequence(
             [

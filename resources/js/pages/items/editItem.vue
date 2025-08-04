@@ -45,7 +45,9 @@ const submit_form = () => {
 <template>
     <Head :title="`Edit ${item.name}`" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <h3 class="text-3xl mt-4 ">Edit Item</h3>
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+
+            <h3 class="text-3xl mt-4 ">Edit Item</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
 
                 <div class="col-span-1">
@@ -124,6 +126,7 @@ const submit_form = () => {
                 </div>
         </form>
 
+        </div>
 
     </AppLayout>
 </template>

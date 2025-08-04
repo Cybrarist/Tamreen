@@ -56,7 +56,9 @@ const get_remaining_exercises = (index) => {
     <Head title="Create Template" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <h3 class="text-3xl mt-4 ">Create Plan Template</h3>
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+
+            <h3 class="text-3xl mt-4 ">Create Plan Template</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-6 rounded-xl my-12">
 
                 <div class="col-span-full sm:col-span-1 flex flex-col space-y-2">
@@ -100,7 +102,7 @@ const get_remaining_exercises = (index) => {
                         <div class="sm:hidden col-span-full">
                             <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                     raised
-                                    class="float-end "
+                                    class="float-end text-white!"
                                     @click="remove_exercise(index)"
                             />
                         </div>
@@ -138,7 +140,7 @@ const get_remaining_exercises = (index) => {
                         <div class="hidden sm:block col-span-2">
                             <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                     raised
-                                    class="float-end "
+                                    class="float-end text-white!"
                                     @click="remove_exercise(index)"
                             />
                         </div>
@@ -157,7 +159,7 @@ const get_remaining_exercises = (index) => {
                 </div>
 
         </form>
-
+        </div>
 
     </AppLayout>
 </template>

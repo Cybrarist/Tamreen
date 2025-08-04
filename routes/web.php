@@ -9,11 +9,13 @@ use App\Http\Controllers\ExercisePlanController;
 use App\Http\Controllers\ExercisePlanTemplateController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkoutController;
 
 Route::middleware('auth')
     ->group(function () {
 
+        Route::resource('users', UserController::class);
         Route::get('/', [ItemController::class , 'index'])->name('dashboard');
         Route::get('/items/search', [ItemController::class, 'search'])->name('items.search');
         Route::resource('items', ItemController::class);

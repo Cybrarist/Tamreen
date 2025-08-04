@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enum\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -43,6 +46,40 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => userRoleEnum::class,
         ];
+    }
+
+
+    public function body_parts(): HasMany
+    {
+        return $this->hasMany(BodyPart::class);
+    }
+
+    public function exercise_plan_templates(): HasMany
+    {
+        return $this->hasMany(ExercisePlanTemplate::class);
+    }
+    public function exercise_plans(): HasMany
+    {
+        return $this->hasMany(ExercisePlan::class);
+    }
+    public function exercises(): HasMany
+    {
+        return $this->hasMany(Exercise::class);
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+    public function types(): HasMany
+    {
+        return $this->hasMany(Type::class);
+    }
+
+    public function workouts(): HasMany
+    {
+        return $this->hasMany(Workout::class);
     }
 }

@@ -74,7 +74,7 @@ const debouncedSearch = useDebounceFn(async () => {
 
             </div>
             <div v-else>
-                No Plan Templates Found
+                No Types Found
             </div>
         </div>
     </AppLayout>

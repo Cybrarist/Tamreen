@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('color')->nullable();
 
-            $table->foreignIdFor(User::class)->nullable()->constrained();
+            $table->foreignIdFor(User::class)->constrained();
         });
     }
 

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignIdFor(Item::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(ExercisePlan::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(ExercisePlan::class)->nullable()->constrained();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('status')->default(WorkoutStatusEnum::InProgress->value);
 

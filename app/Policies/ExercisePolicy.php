@@ -2,9 +2,11 @@
 
 namespace App\Policies;
 
+use App\Enum\UserRoleEnum;
 use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ExercisePolicy
 {
@@ -37,7 +39,8 @@ class ExercisePolicy
      */
     public function update(User $user, Exercise $exercise): bool
     {
-        return false;
+        return $user->id == $exercise->user_id ||
+            $user->role == UserRoleEnum::Admin;
     }
 
     /**

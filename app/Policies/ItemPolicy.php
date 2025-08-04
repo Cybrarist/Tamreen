@@ -13,7 +13,7 @@ class ItemPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class ItemPolicy
      */
     public function view(User $user, Item $item): bool
     {
-        return false;
+        return $user->id === $item->user_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class ItemPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class ItemPolicy
      */
     public function update(User $user, Item $item): bool
     {
-        return false;
+        return $user->id == $item->user_id;
     }
 
     /**
@@ -48,19 +48,4 @@ class ItemPolicy
         return $item->user_id === $user->id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Item $item): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Item $item): bool
-    {
-        return false;
-    }
 }

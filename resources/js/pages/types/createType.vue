@@ -28,12 +28,13 @@ const submit_form = () => {
 <template>
     <Head title="Create Type" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <h3 class="text-3xl mt-4 ">Create Type</h3>
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+            <h3 class="text-3xl ">Create Type</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
 
-                <div class="col-span-1">
-                    <FloatLabel >
-                        <InputText class="w-full" id="name" v-model="form.name" />
+                <div class="col-span-full sm:col-span-2 md:col-span-1">
+                    <FloatLabel>
+                        <InputText fluid class="w-full" id="name" v-model="form.name" />
                         <label for="name">Name</label>
 
                     </FloatLabel>
@@ -41,12 +42,11 @@ const submit_form = () => {
 
                 </div>
 
-                <div class="col-span-2">
-                    <RippleButton class="max-w-32 float-end" type="submit">
-                        Submit
-                    </RippleButton>
-                </div>
-        </form>
+                <RippleButton class="sm:col-start-1 w-32"  type="submit"> Submit </RippleButton>
+            </form>
+
+        </div>
+
 
 
     </AppLayout>

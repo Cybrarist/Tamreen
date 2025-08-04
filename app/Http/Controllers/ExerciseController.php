@@ -8,6 +8,7 @@ use App\Models\BodyPart;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -102,6 +103,7 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
+
         $body_parts = BodyPart::orderBy('name')->get();
 
         $exercise->load('body_parts');
@@ -118,6 +120,7 @@ class ExerciseController extends Controller
     public function update(UpdateExerciseRequest $request, Exercise $exercise)
     {
 
+        Gate::authorize('update', $exercise);
 
         $images = array_diff($exercise->images ?? [], $request->safe(['deleted_images'])['deleted_images'] ?? []);
         $videos = array_diff($exercise->videos ?? [], $request->safe(['deleted_videos'])['deleted_videos'] ?? []);

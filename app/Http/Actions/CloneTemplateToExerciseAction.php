@@ -22,6 +22,7 @@ class CloneTemplateToExerciseAction extends Controller
             $plan = ExercisePlan::create([
                 'name' => $template->name,
                 'description' => $template->description,
+                'exercise_plan_template_id' => $template->id,
                 'item_id' => $item->id,
                 'user_id' => Auth::id()
             ]);

@@ -29,15 +29,19 @@ const mainNavItems: NavItem[] = [
         href: '/exercises',
         icon: LayoutGrid,
     },
-];
-
-const footerNavItems: NavItem[] = [
     {
         title: 'Types',
         href: route('types.index'),
         icon: Folder,
     },
+    {
+        title: 'Users',
+        href: '/users',
+        icon: LayoutGrid,
+    },
 ];
+
+const footerNavItems: NavItem[] = [];
 </script>
 
 <template>

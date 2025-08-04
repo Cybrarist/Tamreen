@@ -11,6 +11,7 @@ import CompleteWorkoutCard from "@/components/CompleteWorkoutCard.vue";
 import {useConfirm } from "primevue/useconfirm";
 import ConfirmDialog from "primevue/confirmdialog";
 import { Trash2, Play, Dumbbell, Check } from "lucide-vue-next";
+import {Dialog, Carousel, Image} from "primevue";
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -95,6 +96,14 @@ const delete_workout = () => {
     })
 }
 
+
+const visible= ref(false)
+const exercise_details = ref(null)
+
+const show_exercise_details = (exercise) => {
+    visible.value = true
+    exercise_details.value = exercise
+}
 </script>
 
 <template>
@@ -115,6 +124,7 @@ const delete_workout = () => {
                              :hotkey="hotkeys[index]"
                              :exercise="exercise"
                              @exercise-updated="debouncedUpdate"
+                             @show-exercise="show_exercise_details"
                 />
 
             </div>
@@ -127,6 +137,8 @@ const delete_workout = () => {
                              :hotkey="hotkeys[index]"
                              :exercise="exercise"
                              @exercise-updated="debouncedUpdate"
+                             @show-exercise="show_exercise_details"
+
                 />
             </div>
 
@@ -135,6 +147,33 @@ const delete_workout = () => {
             </div>
         </div>
 
+
+        <Dialog v-model:visible="visible"
+                header="Exercise Details"
+                modal
+                class="space-y-4"
+                @after-hide="visible=false">
+
+            <div class="grid grid-cols-3 gap-4">
+                <Image v-for="image in exercise_details.images" :src="'/storage/exercises/' + image" class="m-auto" preview
+                       :pt="{
+                                    root:{
+                                        class:'w-full'
+                                    },
+                                    image:{
+                                        class: 'rounded-lg  mx-auto max-h-32 '
+                                    }
+                                    }"
+                />
+
+                <video v-for="video in exercise_details.videos"
+                       :src="'/storage/exercises/' + video"
+                       muted controls
+                       class="max-h-36"
+                />
+            </div>
+
+        </Dialog>
 
     </AppLayout>
 </template>

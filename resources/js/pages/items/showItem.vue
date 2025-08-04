@@ -15,6 +15,7 @@ import ConfirmDialog from 'primevue/confirmdialog';
 import { useConfirm } from "primevue/useconfirm";
 import { SquarePen , Plus, Trash2} from "lucide-vue-next";
 import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem} from "@/components/ui/dropdown-menu";
+import {ScrollPanel} from 'primevue'
 
 const page = usePage()
 const item = computed(() => page.props.item as Item);
@@ -53,18 +54,38 @@ const delete_confirmation = (id:number) => {
             label: 'Delete'
         },
         accept: () => {
-            delete_plan(id)
+            router.delete(route('items.destroy', {
+                item: id
+            }))
+        },
+        reject: () => {
+        }
+    });
+};
+const delete_plan_confirmation = (id:number) => {
+    confirm.require({
+        message: 'Do you want to remove the current plan ?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        rejectProps: {
+            label: 'Cancel',
+            severity: 'secondary',
+            outlined: true
+        },
+        acceptProps: {
+            label: 'Delete'
+        },
+        accept: () => {
+            router.delete(route('plans.destroy', {
+                plan: id
+            }))
         },
         reject: () => {
         }
     });
 };
 
-const delete_plan = (id:number) => {
-    router.delete(route('items.destroy', {
-        item: id
-    }))
-}
+
 </script>
 
 <template>
@@ -74,9 +95,11 @@ const delete_plan = (id:number) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <CloneTemplateToItem @cloned="router.reload()" v-if="plan_dialog" @closed="plan_dialog=false" :item_id="item.id" />
 
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+
         <section class="w-full mt-8 flex items-end justify-between sm:justify-end space-x-8">
             <Link :href="route('workouts.index', {item_id: item.id})">
-                <Button severity="warn" label="Pending Workouts" />
+                <Button severity="warn" label="Pending Workouts" class="text-white!"/>
             </Link>
             <DropdownMenu >
                 <DropdownMenuTrigger class="hover:cursor-pointer">
@@ -147,7 +170,7 @@ const delete_plan = (id:number) => {
                                         >New Session</DropdownMenuItem>
                                         <DropdownMenuItem @click="selected_plan=plan" class="hover:cursor-pointer">Edit</DropdownMenuItem>
                                         <DropdownMenuItem
-                                            @click="delete_confirmation(plan.id)"
+                                            @click="delete_plan_confirmation(plan.id)"
                                             class="hover:cursor-pointer hover:text-red-600!">Delete</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -177,7 +200,7 @@ const delete_plan = (id:number) => {
             </div>
         </section>
 
-
+        </div>
 
         <edit-item-plan v-if="selected_plan" :plan="selected_plan" @closed="selected_plan=null; " />
 

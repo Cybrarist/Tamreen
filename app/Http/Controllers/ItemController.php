@@ -19,6 +19,7 @@ use Inertia\Inertia;
 
 class ItemController extends Controller
 {
+    #
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +29,7 @@ class ItemController extends Controller
             'search' => ['nullable', 'string'],
         ]);
 
-        $items = Item::query();
+        $items = Auth::user()->items();
 
         if(array_key_exists('search', $validated)){
             $items->where('name', 'like', '%'.$validated['search'].'%');
@@ -37,7 +38,7 @@ class ItemController extends Controller
         return Inertia::render('Dashboard' , [
             'items' =>  $items->orderBy('name')
                 ->select(['id', 'name','image','type_id'])
-                ->with('type')
+                ->with('type:id,name')
                 ->cursorPaginate(30)
                 ->appends(request()->query()),
             'search' => $validated['search'] ?? null
@@ -48,19 +49,16 @@ class ItemController extends Controller
     public function create()
     {
         $types = Type::all();
-
         return Inertia::render('items/createItem', [
             'types' => $types,
         ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreItemRequest $request)
     {
-
         $random_name = null;
 
         if($request->hasFile('image')){
@@ -69,7 +67,6 @@ class ItemController extends Controller
             Storage::disk('items')
                 ->put($random_name, file_get_contents($request->file('image')));
         }
-
 
         $item = Item::create(
             $request->safe(['name', 'description', 'type_id']) + [
@@ -89,11 +86,14 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
+        Gate::authorize('view', $item);
+
         $item->load([
-            'exercise_plans'=>[
-                'exercises'
+            'exercise_plans:id,name,item_id'=>[
+                'exercises:id,name,images,videos'
             ]
         ]);
+
         return Inertia::render('items/showItem' , [
             'item' => $item,
         ]);
@@ -104,6 +104,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
+        Gate::authorize('update', $item);
+
         $types = Type::all();
 
         return Inertia::render('items/editItem' , [
@@ -117,18 +119,18 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
+        Gate::authorize('update', $item);
 
         $file_name = $item->image;
 
         if($request->hasFile('image')){
-            $deleted= Storage::disk('items')->delete($item->image);
+            Storage::disk('items')->delete($item->image);
 
             $file_name = Str::random(32) . "." .  $request->file('image')->extension();
 
             Storage::disk('items')
                 ->put($file_name, file_get_contents($request->file('image')));
         }
-
 
         $item = $item->update(
             $request->safe(['name', 'description', 'type_id']) + [
@@ -185,15 +187,4 @@ class ItemController extends Controller
     }
 
 
-    public function search(Request $request)
-    {
-        $validated = $request->validate([
-            'search' => ['required', 'string'],
-        ]);
-
-        $items = Item::where('name', 'like', '%'.$validated['search'].'%')->get();
-
-
-        return ItemResource::collection($items);
-    }
 }

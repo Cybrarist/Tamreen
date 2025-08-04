@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'allow_register' => env('ALLOW_REGISTER', false),
+    'allow_register' => env('ALLOW_REGISTER', true),
 
 
 ];

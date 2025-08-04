@@ -6,6 +6,7 @@ use App\Http\Requests\StoreExercisePlanRequest;
 use App\Http\Requests\UpdateExercisePlanRequest;
 use App\Models\Exercise;
 use App\Models\ExercisePlan;
+use App\Models\Workout;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -107,8 +108,15 @@ class ExercisePlanController extends Controller
      */
     public function destroy(ExercisePlan $plan)
     {
-        $plan->exercises()->delete();
+        $plan->exercises()->detach();
+
+        Workout::where('exercise_plan_id', $plan->id)
+            ->update(['exercise_plan_id' => null]);
 
         $plan->delete();
+
+        return back()
+            ->with('message', 'Plan deleted successfully.')
+            ->with('severity', 'success');
     }
 }

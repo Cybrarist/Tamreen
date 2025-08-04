@@ -95,14 +95,16 @@ const delete_template = () => {
     <Head :title="`Edit ${template.name}` " />
     <AppLayout :breadcrumbs="breadcrumbs">
 
+        <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
+
+
         <div class="w-full flex justify-between mt-4">
             <h3 class="text-lg md:text-3xl mt-4 ">Edit {{template.name}}</h3>
-            <Button severity="danger" icon="pi pi-trash" label="Delete" @click="delete_template()" />
+            <Button severity="danger" class="text-white!" icon="pi pi-trash" label="Delete" @click="delete_template()" />
         </div>
 
 
         <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
-
             <div class="col-span-full sm:col-span-1 flex flex-col space-y-2">
                     <FloatLabel >
                         <InputText v-model="form.name" :invalid="form.errors.name" class="w-full" id="name" fluid />
@@ -145,7 +147,7 @@ const delete_template = () => {
                         <div class="sm:hidden col-span-full">
                             <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                     raised
-                                    class="float-end "
+                                    class="float-end text-white!"
                                     @click="remove_exercise(index)"
                             />
                         </div>
@@ -185,7 +187,7 @@ const delete_template = () => {
                         <div class="hidden sm:block col-span-2">
                             <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                     raised
-                                    class="float-end "
+                                    class="float-end text-white!"
                                     @click="remove_exercise(index)"
                             />
                         </div>
@@ -205,6 +207,7 @@ const delete_template = () => {
             </div>
         </form>
 
+        </div>
         <ConfirmDialog />
 
     </AppLayout>

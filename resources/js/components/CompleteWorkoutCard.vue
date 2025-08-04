@@ -12,7 +12,7 @@ const props = defineProps({
 
 })
 
-const emits = defineEmits(['exercise-updated'])
+const emits = defineEmits(['exercise-updated', 'show-exercise'])
 
 whenever(
     () => props.hotkey && current.has(props.hotkey) && !current.has('shift'),
@@ -42,7 +42,9 @@ const update_workout = (value) => {
 
     <div class="flex flex-col items-center justify-center w-full">
         <div class="w-full flex items-center justify-center h-42 md:h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md hover:cursor-pointer"
-             :style="`background-image: url(/storage/exercises/${((exercise.images?.length) ? exercise.images[0] : 'exercise.png')})`">
+              :style="`background-image: url(/storage/exercises/${((exercise.images?.length) ? exercise.images[0] : 'exercise.png')})`"
+            @click="emits('show-exercise',exercise )"
+        >
             <Tag :value="`${exercise.pivot.metric} (${props.hotkey})`" severity="secondary"
                  class="mx-auto w-full text-center"
                  :pt:label:class="'text-lg md:text-3xl font-bold text-primary capitalize'"
