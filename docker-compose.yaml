@@ -1,0 +1,32 @@
+
+networks:
+  tamreen:
+    driver: bridge
+
+volumes:
+  tamreen:
+  tamreen-logs:
+
+services:
+  tamreen:
+    image: cybrarist/tamreen:latest
+#    build:
+#      context: .
+    ports:
+      - 8080:80
+    networks:
+      - tamreen
+#    volumes:
+#      - discount-bandit:/app
+#      - discount-bandit-logs:/logs
+    volumes:
+      - ./database/database.sqlite:/app/database/database.sqlite
+      - ./.env:/app/.env
+      - ./logs:/logs
+    environment:
+      DB_CONNECTION: sqlite
+      APP_TIMEZONE: UTC
+      APP_URL: "http://localhost:8080"
+      ASSET_URL: "http://localhost:8080"
+      ALLOW_REGISTER: true
+

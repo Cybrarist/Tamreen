@@ -54,7 +54,7 @@ class WorkoutController extends Controller
         ]);
 
         $exercises = DB::table('exercise_exercise_plan')
-            ->where('plan_id', $request->exercise_plan_id)
+            ->where('exercise_exercise_plan.plan_id', $request->exercise_plan_id)
             ->get()
             ->map(fn($item) => [
                 'exercise_id' => $item->exercise_id,
@@ -82,6 +82,7 @@ class WorkoutController extends Controller
             'item',
             'exercises'
         ]);
+
 
         return Inertia::render(
             'workouts/showWorkout',

@@ -111,7 +111,7 @@ const show_exercise_details = (exercise) => {
     <ConfirmDialog />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl py-4">
-            <div class="w-full flex space-x-4 justify-end ">
+            <div class="w-full flex space-x-4 justify-between px-2 md:justify-end ">
 
                 <RippleButton v-if="!completing" @click="delete_workout" class="bg-red-500 text-white"> <Trash2 class="inline" /> Delete Workout</RippleButton>
                 <RippleButton v-if="!completing" @click="completing=true;" class="bg-green-600 text-white"> <Dumbbell class="inline" /> Start Working</RippleButton>

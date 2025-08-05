@@ -2,7 +2,6 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import {BodyPart, type BreadcrumbItem, Exercise} from '@/types';
 import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
-import body_partsSelector from "@/components/body_partsSelector.vue";
 import {FloatLabel, InputText, MultiSelect, Textarea, FileUpload, Select} from "primevue";
 import {RippleButton} from "@/components/ui/ripple-button";
 

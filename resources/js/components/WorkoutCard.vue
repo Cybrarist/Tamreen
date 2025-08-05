@@ -21,9 +21,18 @@ whenever(
 
 whenever(
     () => props.hotkey &&  current.has(props.hotkey) && current.has('shift'),
-    () => { emits('exercise-updated'); props.exercise.pivot.count--;},
+    () => {update_workout(  props.exercise.pivot.count - 1)},
 )
 
+
+const update_workout = (value) => {
+
+    if (value < 0 || value > props.exercise.pivot.total)
+        return
+
+    props.exercise.pivot.count--;
+    emits('exercise-updated');
+}
 
 </script>
 
@@ -50,17 +59,18 @@ whenever(
                                  @update:model-value=" (value) => {
                                      exercise.pivot.count=value
                              }"
+                                 :min="0"
                                  class="md:max-w-3/5 text-center"
                                  :default-value="exercise.pivot.count"
                     >
                         <NumberFieldContent>
-                            <NumberFieldDecrement />
+                            <NumberFieldDecrement  />
                             <NumberFieldInput  />
                             <NumberFieldIncrement />
                         </NumberFieldContent>
                     </NumberField>
                     <span>x {{exercise.pivot.multiplier}} = </span>
-                    <span class="font-bold text-gray-800 dark:text-gray-200">{{Math.round(exercise.pivot.count * exercise.pivot.multiplier)}}</span>
+                    <span class="font-bold text-gray-800 dark:text-gray-200">{{Math.ceil(exercise.pivot.count * exercise.pivot.multiplier)}}</span>
             </div>
         </div>
 

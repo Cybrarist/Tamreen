@@ -7,8 +7,8 @@ import Pagination from "@/components/Pagination.vue";
 import PendingItemCard from "@/components/PendingItemCard.vue";
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
-        href: route('dashboard'),
+        title: 'Pending Workouts',
+        href: route('workouts.index'),
     },
 ];
 

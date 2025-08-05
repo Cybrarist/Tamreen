@@ -16,21 +16,19 @@ const emits = defineEmits(['exercise-updated', 'show-exercise'])
 
 whenever(
     () => props.hotkey && current.has(props.hotkey) && !current.has('shift'),
-    () => { update_workout(++props.exercise.pivot.completed) },
+    () => { update_workout(props.exercise.pivot.completed + 1) },
 )
 
 whenever(
     () => props.hotkey &&  current.has(props.hotkey) && current.has('shift'),
-    () => {update_workout(--props.exercise.pivot.completed)},
+    () => {update_workout(props.exercise.pivot.completed - 1)},
 )
 
 
 const update_workout = (value) => {
-    console.log(value)
 
     if (value < 0 || value > props.exercise.pivot.total)
         return
-
 
     props.exercise.pivot.completed = value;
     emits('exercise-updated');

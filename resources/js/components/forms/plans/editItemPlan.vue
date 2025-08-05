@@ -163,7 +163,7 @@ const get_remaining_exercises = (index) => {
                     <div class="hidden sm:block col-span-2">
                         <Button rounded size="small" severity="danger" icon="pi pi-trash"
                                 raised
-                                class="float-end "
+                                class="float-end text-white!"
                                 @click="remove_exercise(index)"
                         />
                     </div>
