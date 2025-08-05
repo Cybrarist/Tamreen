@@ -26,4 +26,11 @@ services:
       APP_URL: "http://localhost:8080"
       ASSET_URL: "http://localhost:8080"
       ALLOW_REGISTER: true
+      MAIL_MAILER: smtp
+      MAIL_HOST: smtp.gmail.com
+      MAIL_PORT: 465
+      MAIL_USERNAME: "email@gmail.com"
+      MAIL_PASSWORD: "app password"
+      MAIL_ENCRYPTION: tls
+      MAIL_FROM_ADDRESS: "email@gmail.com"
 
