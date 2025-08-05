@@ -121,7 +121,7 @@ class UserController extends Controller
                 ->pluck('id')->toArray();;
 
             DB::table('exercise_exercise_plan')
-                ->whereIn('exercise_plan_id', $user_exercise_plans)
+                ->whereIn('plan_id', $user_exercise_plans)
                 ->delete();
 
             $user->exercise_plans()

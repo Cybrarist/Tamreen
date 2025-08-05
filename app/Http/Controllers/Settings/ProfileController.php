@@ -69,7 +69,7 @@ class ProfileController extends Controller
             $user_exercise_plans = ExercisePlan::where('user_id', $user->id)->pluck('id')->toArray();;
 
             DB::table('exercise_exercise_plan')
-                ->whereIn('exercise_plan_id', $user_exercise_plans)
+                ->whereIn('plan_id', $user_exercise_plans)
                 ->delete();
 
             $user->exercise_plans()->delete();

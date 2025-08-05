@@ -54,7 +54,7 @@ class WorkoutController extends Controller
         ]);
 
         $exercises = DB::table('exercise_exercise_plan')
-            ->where('exercise_plan_id', $request->exercise_plan_id)
+            ->where('plan_id', $request->exercise_plan_id)
             ->get()
             ->map(fn($item) => [
                 'exercise_id' => $item->exercise_id,

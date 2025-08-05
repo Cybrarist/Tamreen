@@ -157,7 +157,7 @@ class ItemController extends Controller
                 ->toArray();
 
             DB::table('exercise_exercise_plan')
-                ->whereIn('exercise_plan_id', $exercise_plans_for_item)
+                ->whereIn('plan_id', $exercise_plans_for_item)
                 ->delete();
 
             $workouts_for_item = Workout::where('item_id', $item->id)
