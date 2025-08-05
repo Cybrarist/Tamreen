@@ -34,7 +34,8 @@ class ExercisePlan extends Model
 
     public function exercises(): BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class)
+        return $this->belongsToMany(Exercise::class, 'exercise_exercise_plan',
+            'plan_id', 'exercise_id')
             ->withPivot([
                 'multiplier',
                 'metric',

@@ -95,7 +95,6 @@ class ExercisePlanController extends Controller
             ];
         }
 
-
         $plan->exercises()->sync($exercises);
 
 

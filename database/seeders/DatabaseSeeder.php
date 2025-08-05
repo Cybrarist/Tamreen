@@ -13,15 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@test.com',
-            'password' => 'password',
-            'role' => 'admin'
-        ]);
-
-        User::factory(100)->create();
-
         $this->call([
             BodyPartSeeder::class,
             ExerciseSeeder::class,

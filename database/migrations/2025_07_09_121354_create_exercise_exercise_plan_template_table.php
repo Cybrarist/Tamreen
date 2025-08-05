@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Exercise::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(ExercisePlanTemplate::class)->constrained()->cascadeOnUpdate();
+            $table->foreignIdFor(ExercisePlanTemplate::class, 'template_id')->constrained()->cascadeOnUpdate();
 
             $table->unsignedInteger('multiplier')->default(1);
-            $table->unique(['exercise_id', 'exercise_plan_template_id']);
+            $table->unique(['exercise_id', 'template_id']);
 
         });
     }

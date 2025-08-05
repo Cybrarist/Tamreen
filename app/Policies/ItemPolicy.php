@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Item;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ItemPolicy
 {
@@ -21,7 +20,7 @@ class ItemPolicy
      */
     public function view(User $user, Item $item): bool
     {
-        return $user->id === $item->user_id;
+        return $user->id == $item->user_id;
     }
 
     /**
@@ -45,7 +44,7 @@ class ItemPolicy
      */
     public function delete(User $user, Item $item): bool
     {
-        return $item->user_id === $user->id;
+        return $item->user_id == $user->id;
     }
 
 }

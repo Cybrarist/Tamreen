@@ -170,7 +170,7 @@ const delete_template = () => {
                                          v-model="exercise.multiplier"
                                          class="h-full  p-select w-full"
                                          :default-value="1"
-                                         :step="0.1" :min="0">
+                                         :step="0.05" :min="0">
                                 <Label for="number_field" class="absolute top-[var(--p-floatlabel-over-active-top)]
                              text-[var(--p-floatlabel-active-color)] font-normal left-[var(--p-floatlabel-position-x)]"
                                        style="font-size:var(--p-floatlabel-active-font-size)"

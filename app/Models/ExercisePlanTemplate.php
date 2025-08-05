@@ -29,7 +29,8 @@ class ExercisePlanTemplate extends Model
 
     public function exercises(): BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class)
+        return $this->belongsToMany(Exercise::class, 'exercise_exercise_plan_template',
+            'template_id', 'exercise_id')
             ->withPivot(['multiplier']);
     }
 }

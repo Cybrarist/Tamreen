@@ -15,9 +15,8 @@ use App\Http\Controllers\WorkoutController;
 Route::middleware('auth')
     ->group(function () {
 
-        Route::resource('users', UserController::class);
         Route::get('/', [ItemController::class , 'index'])->name('dashboard');
-        Route::get('/items/search', [ItemController::class, 'search'])->name('items.search');
+        Route::resource('users', UserController::class);
         Route::resource('items', ItemController::class);
         Route::resource('types', TypeController::class);
 

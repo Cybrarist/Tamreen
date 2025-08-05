@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Exercise;
+use App\Models\ExercisePlan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,12 +18,12 @@ return new class extends Migration
 
             $table->string('metric')->nullable();
 
-            $table->unsignedInteger('multiplier')->default(1);
-            $table->foreignIdFor(App\Models\Exercise::class)->constrained();
-            $table->foreignIdFor(App\Models\ExercisePlan::class)->constrained();
+            $table->decimal('multiplier')->default(1);
+            $table->foreignIdFor(Exercise::class)->constrained();
+            $table->foreignIdFor(ExercisePlan::class, 'plan_id')->constrained();
 
 
-            $table->unique(['exercise_id', 'exercise_plan_id', 'metric']);
+            $table->unique(['exercise_id', 'plan_id', 'metric']);
         });
     }
 

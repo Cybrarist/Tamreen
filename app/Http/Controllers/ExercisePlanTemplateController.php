@@ -128,7 +128,7 @@ class ExercisePlanTemplateController extends Controller
                 ->update(['exercise_plan_template_id' => null]);
 
             DB::table('exercise_exercise_plan_template')
-                ->where('exercise_plan_template_id', $template->id)
+                ->where('template_id', $template->id)
                 ->delete();
 
             $template->delete();

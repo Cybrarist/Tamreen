@@ -28,7 +28,7 @@ class CloneTemplateToExerciseAction extends Controller
             ]);
 
             $template_exercises = DB::table('exercise_exercise_plan_template')
-                ->where('exercise_plan_template_id', $template->id)
+                ->where('template_id', $template->id)
                 ->pluck('multiplier' ,'exercise_id')
                 ->toArray();
 
