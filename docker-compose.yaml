@@ -16,9 +16,6 @@ services:
       - 8080:80
     networks:
       - tamreen
-#    volumes:
-#      - discount-bandit:/app
-#      - discount-bandit-logs:/logs
     volumes:
       - ./database/database.sqlite:/app/database/database.sqlite
       - ./.env:/app/.env
