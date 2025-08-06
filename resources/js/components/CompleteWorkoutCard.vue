@@ -43,7 +43,7 @@ const update_workout = (value) => {
               :style="`background-image: url(/storage/exercises/${((exercise.images?.length) ? exercise.images[0] : 'exercise.png')})`"
             @click="emits('show-exercise',exercise )"
         >
-            <Tag :value="`${exercise.pivot.metric} (${props.hotkey})`" severity="secondary"
+            <Tag :value="`${exercise.name} (${props.hotkey})`" severity="secondary"
                  class="mx-auto w-full text-center"
                  :pt:label:class="'text-lg md:text-3xl font-bold text-primary capitalize'"
                  :pt:root:class="'rounded-none!'"
