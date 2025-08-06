@@ -25,7 +25,7 @@ class StoreItemRequest extends FormRequest
             'name' => ['string', 'required', 'max:255'],
             'type_id' => ['required', 'numeric', 'exists:types,id'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5000']
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5000']
         ];
     }
 }

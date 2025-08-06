@@ -51,7 +51,7 @@ const debouncedUpdate = useDebounceFn(async () => {
         exercise.pivot.total = Math.round(exercise.pivot.count * exercise.pivot.multiplier)
     })
 
-}, 1000)
+}, 300)
 
 const confirm = useConfirm();
 const complete_workout_confirmation = () => {
@@ -112,13 +112,12 @@ const show_exercise_details = (exercise) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl py-4">
             <div class="w-full flex space-x-4 justify-between px-2 md:justify-end ">
-
                 <RippleButton v-if="!completing" @click="delete_workout" class="bg-red-500 text-white"> <Trash2 class="inline" /> Delete Workout</RippleButton>
                 <RippleButton v-if="!completing" @click="completing=true;" class="bg-green-600 text-white"> <Dumbbell class="inline" /> Start Working</RippleButton>
                 <RippleButton v-if="completing" @click="complete_workout_confirmation" class="bg-green-600 text-white"> <Check class="inline" /> Complete Workout</RippleButton>
                 <RippleButton v-if="completing" @click="completing=false;" class="bg-red-500 text-white"> <Play class="inline" /> Continue Recording</RippleButton>
             </div>
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4" v-if="workout.exercises?.length && !completing">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 px-4" v-if="workout.exercises?.length && !completing">
                 <WorkoutCard :key="exercise.id"
                              v-for="(exercise, index) in workout.exercises"
                              :hotkey="hotkeys[index]"
@@ -130,7 +129,7 @@ const show_exercise_details = (exercise) => {
             </div>
 
 
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4" v-else-if="workout.exercises?.length && completing">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 px-4" v-else-if="workout.exercises?.length && completing">
                 <CompleteWorkoutCard
                             :key="exercise.id"
                              v-for="(exercise, index) in workout.exercises"
