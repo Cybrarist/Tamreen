@@ -153,7 +153,7 @@ const show_exercise_details = (exercise) => {
                 class="space-y-4"
                 @after-hide="visible=false">
 
-            <div class="grid grid-cols-3 gap-4">
+            <div v-if="exercise_details.images?.length > 0  || exercise_details.videos?.length > 0 " class="grid grid-cols-3 gap-4">
                 <Image v-for="image in exercise_details.images" :src="'/storage/exercises/' + image" class="m-auto" preview
                        :pt="{
                                     root:{
@@ -170,6 +170,10 @@ const show_exercise_details = (exercise) => {
                        muted controls
                        class="max-h-36"
                 />
+            </div>
+
+            <div v-else>
+                No images or videos found for this exercise
             </div>
 
         </Dialog>
