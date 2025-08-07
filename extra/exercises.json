@@ -1,0 +1,548 @@
+[
+    {
+        "name" : "Push up",
+        "description" : "Can be done from knees, or legs. Arms parallel to your body like the dude in the gif.",
+        "unit" : "reps",
+        "images" : ["https://tamreen.cybrarist.com/storage/exercises/images/push up.gif"],
+        "videos" : ["https://tamreen.cybrarist.com/storage/exercises/videos/push up.mp4"]
+    },
+    {
+        "name" : "Wide Push up",
+        "description" : "Can be done from knees, or legs. Arms parallel to your body like the dude in the gif.",
+        "unit" : "reps",
+        "images" : ["https://tamreen.cybrarist.com/storage/exercises/images/wide push up.gif"],
+        "videos" : []
+    },
+    {
+        "name": "Narrow Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/narrow push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Up And Down Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/up and down push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Push up Row",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/push up row.gif"],
+        "videos": []
+    },
+    {
+        "name": "Single Leg Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/single leg push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Rotational Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/rotational push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Pike Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/pike push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Climber Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/climber push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Archer Push up",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/archer push up.gif"],
+        "videos": []
+    },
+    {
+        "name": "Push up Walk",
+        "description": "",
+        "unit": "reps",
+        "images": [],
+        "videos": []
+    },
+    {
+        "name": "Arnold Press",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/arnold press.gif"],
+        "videos": []
+    },
+    {
+        "name": "Bicep Curl",
+        "description": "Don't use momentum. Make sure the movement is coming from the bottom half of your arm not your shoulder moving the weight.",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/bicep curl.gif"]
+    },
+    {
+        "name": "Bicycle Crunch",
+        "description": "The lower the \"straight\" leg is to the ground the more challenging this exercise is. ",
+        "unit": "reps"
+    },
+    {
+        "name": "Bounds",
+        "description": "Do laps across the room of these.",
+        "unit": "reps"
+    },
+    {
+        "name": "Box Jumps",
+        "description": "Don't be afraid, you can jump higher than you think. Just try it once.",
+        "unit": "reps"
+    },
+    {
+        "name": "Box Toe Touch",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Broad Jump",
+        "description": "You can do these for speed, or for distance. Speed = Cardio, Distance/Height = Plyo",
+        "unit": "reps"
+    },
+    {
+        "name": "Bulgarian Split Squat",
+        "description": "Use Single 30LB Dumbbell or an Olympic Bar",
+        "unit": "reps"
+    },
+    {
+        "name": "Burpee",
+        "description": "Option with half Bosu, Pushup Optional. Make sure you don't round your back",
+        "unit": "reps"
+    },
+    {
+        "name": "Burpee Broad Jump",
+        "description": "Do laps of these across the room if you have the space.",
+        "unit": "reps"
+    },
+    {
+        "name": "Butt Kickers",
+        "description": "Do it like you mean it, or this exercise is a waste of time. ",
+        "unit": "reps"
+    },
+    {
+        "name": "Calf Raise",
+        "description": "Play around with foot placement, some gyms also have machines for this",
+        "unit": "reps"
+    },
+    {
+        "name": "Chest Press",
+        "description": "You can do this lying on the ground, or on a bench top",
+        "unit": "reps"
+    },
+    {
+        "name": "Close to Wide Grip Burnout",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Compass Jump",
+        "description": "These can also be done with both feet on the ground.",
+        "unit": "reps"
+    },
+    {
+        "name": "Crab Crawl",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Curtsey Lunges",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Deficit Squat",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Donkey Kick",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Fire Hydrant",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Flutter Kick",
+        "description": "Her neck looks like its undergoing some serious strain. Feel free to leave yours on the ground.",
+        "unit": "reps"
+    },
+    {
+        "name": "Frogger",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Glute Bridge",
+        "description": "If using weights, place in hip crease",
+        "unit": "reps"
+    },
+    {
+        "name": "Glute Bridge March",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Goblet Squat",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Halo",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Heart Pump",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "High Knees",
+        "description": "My coach always says, your high knees tells a lot about your dedication. Do yours like the guy in the gif. Get your knees up or don't bother!",
+        "unit": "reps"
+    },
+    {
+        "name": "Jump Lunges",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Jump Rope",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Jumping Jack Push Press",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Jumping Jacks",
+        "description": "Go faster than the gif lady. I chose her because she has good form, your hand should always touch at the top",
+        "unit": "Seconds"
+    },
+    {
+        "name": "Kettlebell Swing",
+        "description": "When I do these I usually keep my hand close to my body and let my hips \"push\" the movement. If you'd like to experiment, you can use a dumbbell instead",
+        "unit": "reps"
+    },
+    {
+        "name": "Knee Drive",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Lateral Band Walk",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Leg Pull Apart",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Leg Raise",
+        "description": "Hold onto something heavy",
+        "unit": "Seconds"
+    },
+    {
+        "name": "Lying Leg Raises",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Military Plank",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Monkey Jump",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Mountain Climbers",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Plank",
+        "description": "",
+        "unit": "Seconds"
+    },
+    {
+        "name": "Plank Jack",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Plank Row",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Reverse Crunches",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Row",
+        "description": "Bar + 15LB",
+        "unit": "reps"
+    },
+    {
+        "name": "Russian Twist",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Seal Jacks",
+        "description": "Clap your hands and dance around while you do these. Makes life more fun.",
+        "unit": "reps"
+    },
+    {
+        "name": "Shoulder Press",
+        "description": "Bar + 5LB",
+        "unit": "reps"
+    },
+    {
+        "name": "Side Arm / Lateral Raise",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Side Lunge",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Side Plank",
+        "description": "",
+        "unit": "Seconds"
+    },
+    {
+        "name": "Side Plank Dips",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Side Plank with Leg Lift",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Single Arm Clean and Press ",
+        "description": "Currently using 25LB",
+        "unit": "reps"
+    },
+    {
+        "name": "Single Leg Hip Bridge",
+        "description": "You're wasting your time on this if you're not actually thinking about squeezing your glutes with each movement. You really need to be focused to do this.",
+        "unit": "reps"
+    },
+    {
+        "name": "Single Leg Squat",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Situp and Throw",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Skaters",
+        "description": "Lady in the gif isn't giving it 100% make sure to touch the ground between reps",
+        "unit": "reps"
+    },
+    {
+        "name": "Skipping",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Skull Crusher",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Spiderman Pushup",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Squat",
+        "description": "Bar + 45LB",
+        "unit": "reps"
+    },
+    {
+        "name": "Squat Jump",
+        "description": "You can do these for height (plyo) or speed (cardio) and to switch them up sometimes do them with your arms clasped at the front so it's a leg-only exercise",
+        "unit": "reps"
+    },
+    {
+        "name": "Squat Jumps 180",
+        "description": "Turn body 180 while doing squat jump",
+        "unit": "reps"
+    },
+    {
+        "name": "Squat to Lateral Leg Lift",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Standing Glute Kickbaks",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Standing Leg Lift",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Standing Oblique Crunch",
+        "description": "20LB Weight Minimum",
+        "unit": "reps"
+    },
+    {
+        "name": "Standing Cross Crunches",
+        "description": "",
+        "unit": "reps",
+        "images": ["standing cross crunches.gif"]
+    },
+    {
+        "name": "Star Jump",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Step Up Lunges",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Step-Back Lunge",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Straightup Situp",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Sumo Squat",
+        "description": "Bar + 35LB. You want your legs to be just wide enough that your knees still track over your toes",
+        "unit": "reps"
+    },
+    {
+        "name": "Superman",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/superman.gif"]
+    },
+    {
+        "name": "Alternating Superman",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/alternating superman.gif"]
+    },
+    {
+        "name": "Touchdown",
+        "description": "",
+        "unit": "reps"
+    },
+    {
+        "name": "Tricep Dip",
+        "description": "Find a chair or platform you can lean on.",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/tricep dip.gif"]
+    },
+    {
+        "name": "Tricep Kick-Back",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/tricep kick-back.gif"]
+    },
+    {
+        "name": "Tricep Overhead Press",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/tricep overhead press.gif"]
+    },
+    {
+        "name": "Tuck Jump",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/tuck jump.gif"]
+    },
+    {
+        "name": "Twisted Mountain Climbers",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/twisted mountain climbers.gif"]
+    },
+    {
+        "name": "Wall Ball",
+        "description": "Toss the Medicine Ball in the air, or against a solid wall (concrete or brick) if available.",
+        "unit": "reps",
+        "image": ["https://tamreen.cybrarist.com/storage/exercises/images/wall ball.gif"]
+    },
+    {
+        "name": "Weighted Jumping Jacks",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/weighted jumping jacks.gif"]
+    },
+    {
+        "name": "Weighted Punches",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/weighted punches.gif"]
+    },
+    {
+        "name": "Dead Bug",
+        "description": "Really good if you have lower back pain and want to do an ab workout",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/dead bug.gif" , "https://tamreen.cybrarist.com/storage/exercises/images/dead bug 1.gif"]
+
+    },
+    {
+        "name": "Ipsilateral Dead Bug",
+        "description": "Rather than moving the opposite arm and leg, this exercise involves moving the arm and leg on the same side.",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/ipsilateral dead bug.gif"],
+        "videos": ["https://tamreen.cybrarist.com/storage/exercises/videos/ipsilateral dead bug.mp4"]
+    },
+    {
+        "name": "Dead Bug With A Weight",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/dead bug with a weight.gif"]
+    },
+    {
+        "name": "Dead Bug With A Ball",
+        "description": "",
+        "unit": "reps",
+        "images": ["https://tamreen.cybrarist.com/storage/exercises/images/dead bug with a ball.gif"]
+    }
+]

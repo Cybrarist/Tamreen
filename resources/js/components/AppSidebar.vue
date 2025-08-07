@@ -26,7 +26,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Exercises',
-        href: '/exercises',
+        href: route('exercises.index'),
         icon: LayoutGrid,
     },
     {
@@ -36,12 +36,18 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Users',
-        href: '/users',
+        href: route('users.index'),
         icon: LayoutGrid,
     },
 ];
 
-const footerNavItems: NavItem[] = [];
+const footerNavItems: NavItem[] = [
+    {
+        title: 'Import Exercises',
+        href: route('exercises.import'),
+        icon: LayoutGrid,
+    },
+];
 </script>
 
 <template>

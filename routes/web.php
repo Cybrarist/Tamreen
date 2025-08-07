@@ -3,6 +3,7 @@
 
 use App\Http\Actions\CloneTemplateToExerciseAction;
 use App\Http\Actions\CompleteWorkoutAction;
+use App\Http\Actions\ImportExercisesAction;
 use App\Http\Controllers\BodyPartController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExercisePlanController;
@@ -24,6 +25,8 @@ Route::middleware('auth')
         Route::resource('/plans/templates', ExercisePlanTemplateController::class);
         Route::resource('plans', ExercisePlanController::class);
         Route::get('exercises/filter', [ExerciseController::class , 'filter'])->name('exercises.filter');
+        Route::post('exercises/import', ImportExercisesAction::class )->name('exercises.start-import');
+        Route::inertia('exercises/import', 'exercises/import')->name('exercises.import');
         Route::resource('exercises', ExerciseController::class);
         Route::resource('body-parts', BodyPartController::class);
 
@@ -32,6 +35,7 @@ Route::middleware('auth')
         Route::delete('/plans/{plan}/delete', [ExercisePlanController::class, 'destroy'])->name('plans.delete');
         Route::resource('workouts', WorkoutController::class);
         Route::get('/workouts/{workout}/complete', CompleteWorkoutAction::class)->name('workouts.complete');
+
     });
 
 

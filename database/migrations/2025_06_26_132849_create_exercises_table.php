@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('unit')->default(\App\Enum\ExerciseUnitEnum::Reps->value);
             $table->text('images')->nullable();
             $table->text('videos')->nullable();
