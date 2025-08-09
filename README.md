@@ -1,3 +1,5 @@
+![logo.png](public/logo.png)
+
 # Tamreen
 Tamreen (workout in arabic) is an app that motivate the person to exercise while playing video games, doing chores or anything.
 create plan for what you like and keep track of workouts to get better.
