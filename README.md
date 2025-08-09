@@ -1,6 +1,6 @@
-<div align="center">
-<img src="./public/logo.png" alt="Logo" style="max-width: 200px;">
-</div>
+<p align="center">
+    <img src="./public/logo.png" alt="Logo" style="width: 200px;">
+</p>
 
 # Tamreen
 Tamreen (workout in arabic) is an app that motivate the person to exercise while playing video games, doing chores or anything.
