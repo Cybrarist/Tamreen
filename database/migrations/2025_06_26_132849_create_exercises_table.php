@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('unit')->default(\App\Enum\ExerciseUnitEnum::Reps->value);
-            $table->text('images')->nullable();
-            $table->text('videos')->nullable();
+            $table->text('images')->default("[]");
+            $table->text('videos')->default("[]");
 
             $table->foreignIdFor(User::class)->nullable()->constrained();
         });

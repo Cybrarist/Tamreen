@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem, } from '@/types';
-import {Head, useForm} from '@inertiajs/vue3';
+import {Head, useForm, usePage} from '@inertiajs/vue3';
 import {ToggleSwitch, FileUpload} from "primevue";
 import {RippleButton} from "@/components/ui/ripple-button";
 import InputError from "@/components/InputError.vue";
@@ -18,6 +18,8 @@ const form  = useForm({
     file : null,
 })
 
+const page = usePage();
+const user = page.props.auth.user;
 
 const submit_form = () => {
     form.post(route('exercises.start-import'), {
@@ -33,15 +35,8 @@ const submit_form = () => {
     <Head title="Dashboard" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
-            <h3 class="text-3xl mt-4 ">Create Exercise</h3>
+            <h3 class="text-3xl mt-4 ">Import Exercises</h3>
             <form  @submit.prevent="submit_form" class="grid w-full grid-cols-3 gap-x-4 gap-y-12 rounded-xl my-12">
-
-                <div class="col-span-full flex-col flex space-y-4">
-                    <label for=""> Do you want exercises to be available for all users?</label>
-                    <ToggleSwitch v-model="form.all_users" />
-                    <InputError :message="form.errors.all_users" v-if="form.errors.all_users" />
-
-                </div>
 
                 <div class="start-col-1 col-span-full md:col-span-2 space-y-4">
                     <h2 class="text-xl"> Json File </h2>

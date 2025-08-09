@@ -79,6 +79,7 @@
     {
         "name": "Arnold Press",
         "unit": "reps",
+        "description": "",
         "images": ["https://tamreen.cybrarist.com/storage/exercises/images/arnold press.gif"],
         "videos": []
     },
@@ -236,7 +237,7 @@
     {
         "name": "Jumping Jacks",
         "description": "Go faster than the gif lady. I chose her because she has good form, your hand should always touch at the top",
-        "unit": "Seconds"
+        "unit": "seconds"
     },
     {
         "name": "Kettlebell Swing",
@@ -261,7 +262,7 @@
     {
         "name": "Leg Raise",
         "description": "Hold onto something heavy",
-        "unit": "Seconds"
+        "unit": "seconds"
     },
     {
         "name": "Lying Leg Raises",
@@ -286,7 +287,7 @@
     {
         "name": "Plank",
         "description": "",
-        "unit": "Seconds"
+        "unit": "seconds"
     },
     {
         "name": "Plank Jack",
@@ -336,7 +337,7 @@
     {
         "name": "Side Plank",
         "description": "",
-        "unit": "Seconds"
+        "unit": "seconds"
     },
     {
         "name": "Side Plank Dips",

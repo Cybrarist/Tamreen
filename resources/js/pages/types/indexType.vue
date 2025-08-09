@@ -41,19 +41,17 @@ const debouncedSearch = useDebounceFn(async () => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div  class="flex h-fit overflow-auto flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="w-full flex justify-between sticky">
-                <div class="w-full flex justify-between">
-                    <div class="w-full md:w-1/3 flex flex-row">
-                        <VanishingInput
-                            class="w-full"
-                            v-model="search"
-                            @change="debouncedSearch"
-                            :placeholders="placeholders"
-                        />
-                    </div>
-
-                    <Link :href="route('types.create')">
+                <div class="w-full flex justify-between items-center">
+                    <VanishingInput
+                        class="w-3/5 sm:w-2/3 lg:w-1/3"
+                        v-model="search"
+                        @change="debouncedSearch"
+                        :placeholders="placeholders"
+                    />
+                    <Link class="w-fit" :href="route('types.create')">
                         <Button size="small" label="Add Type" icon="pi pi-plus" />
                     </Link>
+
                 </div>
             </div>
 

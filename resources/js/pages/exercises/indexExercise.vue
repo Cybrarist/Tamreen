@@ -61,7 +61,7 @@ const debouncedSearch = useDebounceFn(async () => {
 <!--            <div class="w-1/3">-->
 <!--                <BodyPartsFilter :body-parts="bodyParts" @filtered="filterExercises" />-->
 <!--            </div>-->
-            <div class="grid grid-cols-2 z-20 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4" v-if="body_parts.length">
+            <div class="grid grid-cols-2 z-20 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4" v-if="exercises.data.length">
                 <Link :key="exercise.id" v-for="exercise in exercises.data"
                       :href="route('exercises.show', exercise.id)"
                 >
@@ -81,7 +81,7 @@ const debouncedSearch = useDebounceFn(async () => {
 
             </div>
             <div v-else>
-                No Items Found
+                No Exercises Found, you can <Link class="underline" :href="route('exercises.import')">import</Link>
             </div>
         </div>
 

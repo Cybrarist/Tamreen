@@ -98,7 +98,7 @@ const delete_user = (id: number) => {
                     </Column>
                     <Column>
                       <template #body="slotProps">
-                        <div class="space-x-4">
+                        <div class="space-x-4 space-y-4 sm:space-y-0">
                             <Button severity="warning" icon="pi pi-pencil" rounded @click="user_selected=slotProps.data" />
                             <Button class="text-white!" severity="danger" icon="pi pi-trash" rounded @click="delete_user(slotProps.data.id)" />
                         </div>
