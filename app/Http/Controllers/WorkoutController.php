@@ -104,7 +104,9 @@ class WorkoutController extends Controller
             $exercise['workout_id'] = $workout->id;
             $exercise['total'] = ceil($exercise['count'] * $exercise['multiplier']);
             $exercise['exercise_id'] = $exercise['id'];
+            unset($exercise['id']);
         }
+
 
         DB::table('exercise_workout')
             ->where('workout_id', $workout->id)
